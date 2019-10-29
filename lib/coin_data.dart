@@ -34,15 +34,20 @@ const List<String> cryptoList = [
 const bitcoinURL = 'https://apiv2.bitcoinaverage.com/indices/global/ticker';
 
 class CoinData {
-  Future getCoinData(chosenCurrency) async {
-    String requestURL = '$bitcoinURL/BTC$chosenCurrency';
-    Response response = await get(requestURL);
-    if (response.statusCode == 200) {
-      var decodedData = jsonDecode(response.body);
-      var lastPrice = decodedData['last'];
-      return lastPrice;
-    } else {
-      print(response.statusCode);
+  Future getCoinData(String chosenCurrency) async {
+    Map<String, String> cryptoPrices = {};
+
+    for (String crypto in cryptoList) {
+      String requestURL = '$bitcoinURL/$crypto$chosenCurrency';
+      Response response = await get(requestURL);
+      if (response.statusCode == 200) {
+        var decodedData = jsonDecode(response.body);
+        var lastPrice = decodedData['last'];
+        cryptoPrices[crypto] = lastPrice.toStringAsFixed(0);
+      } else {
+        print(response.statusCode);
+      }
     }
+    return cryptoPrices;
   }
 }
