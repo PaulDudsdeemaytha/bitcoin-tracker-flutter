@@ -1,6 +1,8 @@
 # Bitcoin Tracker - A cryptocurency price app
 This is an app that allows users to see how much it would be to purchase different cryptocurrency. The prices shown are live, and can be converted into different currencies of the world. 
 
+![demo](demo.mp4 =300x)
+
 ## Technologies Used 
 * Flutter
 * Dart
