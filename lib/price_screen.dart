@@ -45,7 +45,6 @@ class _PriceScreenState extends State<PriceScreen> {
       backgroundColor: Colors.lightBlue,
       itemExtent: 32,
       onSelectedItemChanged: (selectedIndex) async {
-        print(selectedIndex);
         setState(() {
           selectedCurrency = currenciesList[selectedIndex];
           getData();
@@ -81,7 +80,7 @@ class _PriceScreenState extends State<PriceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Coin Ticker'),
+        title: Text('Crypto Currency Tracker'),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

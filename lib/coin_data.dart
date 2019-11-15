@@ -41,9 +41,11 @@ class CoinData {
       String requestURL = '$bitcoinURL/$crypto$chosenCurrency';
       Response response = await get(requestURL);
       if (response.statusCode == 200) {
+        print(cryptoPrices);
         var decodedData = jsonDecode(response.body);
         var lastPrice = decodedData['last'];
         cryptoPrices[crypto] = lastPrice.toStringAsFixed(0);
+        print(cryptoPrices);
       } else {
         print(response.statusCode);
       }
